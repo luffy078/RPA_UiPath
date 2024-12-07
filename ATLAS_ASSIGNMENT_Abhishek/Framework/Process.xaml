@@ -1,0 +1,223 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Process" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property sap2010:Annotation.AnnotationText="Transaction item to be processed." Name="in_TransactionItem" Type="InArgument(ui:QueueItem)" />
+    <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property sap2010:Annotation.AnnotationText="Get the Current Directory into which other Data Folders are being initated and utilized" Name="in_CurrentDirectory" Type="InArgument(x:String)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>818.4,454.4</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="50">
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Windows.Forms</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>System.Globalization</x:String>
+      <x:String>System.Numerics</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="80">
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.Windows.Forms</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Reflection.MetadataLoadContext</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>System.Linq.Parallel</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Linq.Queryable</AssemblyReference>
+      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="1182.6666666666667,1675.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="sd:DataTable" sap2010:Annotation.AnnotationText="Table The will be extracted after Multiple Regex on the Text Scrapped from PDF using OCR" Name="dt_ExtractedTable" />
+      <Variable x:TypeArguments="sd:DataTable" sap2010:Annotation.AnnotationText="Get the Data from the Output Excel on which Linq needs to be performed to get the summarized value of the data" Name="dt_ExtractedInvoicesDataTable" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="564.6666666666666,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Start: Process&quot;]" />
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ProcessAtlasPdfs - Invoke Workflow " sap:VirtualizedContainerService.HintSize="564.6666666666666,177.33333333333334" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Framework\ProcessAtlasPdfs.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_PdfFilePath">[in_TransactionItem.SpecificContent("FilePath").ToString]</InArgument>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="in_Config">[in_Config.ToDictionary(Function(x) x.Key, Function(y) y.Value.ToString)]</InArgument>
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_ExtractedTable">[dt_ExtractedTable]</OutArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:AppendRange WorkbookPathResource="{x:Null}" DataTable="[dt_ExtractedTable]" DisplayName="Append Range Workbook: Output of Extracted Table" sap:VirtualizedContainerService.HintSize="564.6666666666666,148" sap2010:WorkflowViewState.IdRef="AppendRange_1" SheetName="Sheet1" WorkbookPath="[in_CurrentDirectory+&quot;Data\Output\Output.xlsx&quot;]" />
+    <ui:ReadRange Range="{x:Null}" WorkbookPathResource="{x:Null}" AddHeaders="True" DataTable="[dt_ExtractedInvoicesDataTable]" DisplayName="Read Range Workbook: to Get All data from Report Table" sap:VirtualizedContainerService.HintSize="564.6666666666666,120" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Sheet1" WorkbookPath="[in_CurrentDirectory+&quot;Data\Output\Output.xlsx&quot;]" />
+    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each currentCellPositionKey" sap:VirtualizedContainerService.HintSize="564.6666666666666,784.6666666666666" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[in_Config.Keys.Where(function(Itemkey) Itemkey.ToLower.Trim.StartsWith(&quot;cellposition&quot;,False,Globalization.CultureInfo.CurrentCulture)).ToList]">
+      <ui:ForEach.Body>
+        <ActivityAction x:TypeArguments="x:String">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:String" Name="currentCellPositionKey" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="530.6666666666666,636.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:String" Name="CellValue" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Switch x:TypeArguments="x:String" sap2010:Annotation.AnnotationText="Check for Cell Position Key for the value which needs to be Generated f" DisplayName="Switch  Check for Cell Position" Expression="[currentCellPositionKey.Split(&quot;_&quot;c)(1)]" sap:VirtualizedContainerService.HintSize="496.6666666666667,407.3333333333333" sap2010:WorkflowViewState.IdRef="Switch`1_2">
+              <Switch.Default>
+                <Throw DisplayName="Throw: New Cell Position Found in summary Table" Exception="[New BusinessRuleException(&quot;Error while generating summary of report for: &quot;+currentCellPositionKey.Split(&quot;_&quot;c)(1))]" sap:VirtualizedContainerService.HintSize="334.6666666666667,92" sap2010:WorkflowViewState.IdRef="Throw_1" />
+              </Switch.Default>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <Assign x:Key="AverageLineItemRate" DisplayName="Assign: Cell Value for AverageLineItemRate" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_4">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[CellValue]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">[(math.Round(dt_ExtractedInvoicesDataTable.AsEnumerable.Where(function(ItemRow) Double.TryParse(ItemRow(10).ToString.TrimStart("$"c),globalization.NumberStyles.Float)).Average(function(ItemRate) if(Double.TryParse(ItemRate(10).ToString.TrimStart("$"c),globalization.NumberStyles.Float),cdbl(ItemRate(10).ToString.TrimStart("$"c)),0)),2)).ToString]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <Assign x:Key="SumOfAllInvoiceTotals" sap2010:Annotation.AnnotationText="Assign value for SumOfAllInvoiceTotals" DisplayName="Assign: Cell Value for SumOfAllInvoiceTotals" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_5">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[CellValue]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">[(math.Round(dt_ExtractedInvoicesDataTable.AsEnumerable.Where(function(ItemRow) Double.TryParse(ItemRow(10).ToString.TrimStart("$"c),globalization.NumberStyles.Float)).Sum(function(ItemRate) if(Double.TryParse(ItemRate(13).ToString.TrimStart("$"c),globalization.NumberStyles.Float),cdbl(ItemRate(13).ToString.TrimStart("$"c)),0)),2)).ToString]</InArgument>
+                </Assign.Value>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </Assign>
+              <Assign x:Key="HighestVolumeItemDescription" DisplayName="Assign: Cell Value for HighestVolumeItemDescription" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_6">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[CellValue]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">[cstr(dt_ExtractedInvoicesDataTable.AsEnumerable.OrderByDescending(function(lineItem) if(Double.TryParse(lineItem(9).ToString.TrimStart("$"c),globalization.NumberStyles.Float),cdbl(lineItem(9).ToString.TrimStart("$"c)),0)).First()(8))]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <Assign x:Key="HighestTotalCostItemDescription" DisplayName="Assign: Cell Value for HighestTotalCostItemDescription" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_7">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[CellValue]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">[cstr(dt_ExtractedInvoicesDataTable.AsEnumerable.OrderByDescending(function(lineItem) if(Double.TryParse(lineItem(11).ToString.TrimStart("$"c),globalization.NumberStyles.Float),cdbl(lineItem(11).ToString.TrimStart("$"c)),0)).First()(8))]</InArgument>
+                </Assign.Value>
+              </Assign>
+            </Switch>
+            <ui:WriteCell WorkbookPathResource="{x:Null}" sap2010:Annotation.AnnotationText="Update respective Cell value for the summary of report" Cell="[in_Config(currentCellPositionKey).ToString]" DisplayName="Write Cell Workbook: Update Respective Cell Value" sap:VirtualizedContainerService.HintSize="496.6666666666667,169.33333333333334" sap2010:WorkflowViewState.IdRef="WriteCell_1" SheetName="Sheet1" Text="[CellValue]" WorkbookPath="[in_CurrentDirectory+&quot;Data\Output\Output.xlsx&quot;]">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:WriteCell>
+          </Sequence>
+        </ActivityAction>
+      </ui:ForEach.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:ForEach>
+    <ui:LogMessage DisplayName="Log Message Process End" sap:VirtualizedContainerService.HintSize="564.6666666666666,167.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;End:  Process&quot;]" />
+  </Sequence>
+</Activity>

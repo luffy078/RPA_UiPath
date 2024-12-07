@@ -1,0 +1,673 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Performer_ATLAS" this:Performer_ATLAS.in_PdfFilePath="C:\Personal\Batch1\VendorB\VendorB - 4.pdf" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:this="clr-namespace:" xmlns:uasc="clr-namespace:UiPath.Activities.System.Collections;assembly=UiPath.System.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property sap2010:Annotation.AnnotationText="Path to the PDF file out of which Data needs to extracted" Name="in_PdfFilePath" Type="InArgument(x:String)" />
+    <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:String))" />
+    <x:Property sap2010:Annotation.AnnotationText="Table The will be extracted after Multiple Regex on the Text Scrapped from PDF using OCR" Name="out_dt_ExtractedTable" Type="OutArgument(sd:DataTable)" />
+  </x:Members>
+  <this:Performer_ATLAS.in_Config>
+    <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" />
+  </this:Performer_ATLAS.in_Config>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap2010:WorkflowViewState.IdRef>Performer_ATLAS_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>System.Text.RegularExpressions</x:String>
+      <x:String>UiPath.Activities.System.Collections</x:String>
+      <x:String>System.Numerics</x:String>
+      <x:String>System.Globalization</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Linq.Async.Queryable</AssemblyReference>
+      <AssemblyReference>System.Linq.Parallel</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Linq.Queryable</AssemblyReference>
+      <AssemblyReference>System.Text.RegularExpressions</AssemblyReference>
+      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+      <AssemblyReference>System.CodeDom</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Performer_ATLAS" sap:VirtualizedContainerService.HintSize="1182.6666666666667,3721.3333333333335" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="scg:List(x:String)" sap2010:Annotation.AnnotationText=" Texts extracted from OCR" Name="ExtractedTexts" />
+      <Variable x:TypeArguments="scg:List(x:String)" sap2010:Annotation.AnnotationText="List of String for the Regex Match " Name="RegexMatch" />
+      <Variable x:TypeArguments="scg:List(x:String)" sap2010:Annotation.AnnotationText="List of string that would be inserted in the Row of Extracted Table" Name="RowInsertValue" />
+      <Variable x:TypeArguments="scg:List(x:String)" sap2010:Annotation.AnnotationText="List of Redundantwords that needs to be ignored while Matching/Extrating from Text" Name="RedundantWordsList" />
+      <Variable x:TypeArguments="scg:List(scg:List(x:String))" sap2010:Annotation.AnnotationText="List whose elements are list as well" Name="JaggedLineItemList" />
+      <Variable x:TypeArguments="scg:List(x:String)" sap2010:Annotation.AnnotationText="List of Amount Values Extracted From Text" Name="AmountValues" />
+      <Variable x:TypeArguments="scg:List(x:String)" sap2010:Annotation.AnnotationText="List of Quantities Extracted from Text" Name="QuantityValues" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message: Start" sap:VirtualizedContainerService.HintSize="1118.6666666666667,57.333333333333336" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Start: Process ATLAS Pdfs&quot;]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:LogMessage>
+    <Assign DisplayName="Assign: Initalize Redundant Word List" sap:VirtualizedContainerService.HintSize="1118.6666666666667,116.66666666666667" sap2010:WorkflowViewState.IdRef="Assign_11">
+      <Assign.To>
+        <OutArgument x:TypeArguments="scg:List(x:String)">[RedundantWordsList]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="scg:List(x:String)">[New List(Of String)(Split(in_Config("Redundant_Words"), ","))]</InArgument>
+      </Assign.Value>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </Assign>
+    <Assign DisplayName="Assign: Initialize RegexMatch List" sap:VirtualizedContainerService.HintSize="1118.6666666666667,116.66666666666667" sap2010:WorkflowViewState.IdRef="Assign_73">
+      <Assign.To>
+        <OutArgument x:TypeArguments="scg:List(x:String)">[RegexMatch]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="scg:List(x:String)">[New list(of String)]</InArgument>
+      </Assign.Value>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </Assign>
+    <Assign DisplayName="Assign: Initialize Row insert Value" sap:VirtualizedContainerService.HintSize="1118.6666666666667,116.66666666666667" sap2010:WorkflowViewState.IdRef="Assign_74">
+      <Assign.To>
+        <OutArgument x:TypeArguments="scg:List(x:String)">[RowInsertValue]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="scg:List(x:String)">[New list(of String)]</InArgument>
+      </Assign.Value>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </Assign>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="GetOCRData - Get Text" sap:VirtualizedContainerService.HintSize="1118.6666666666667,57.333333333333336" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Framework\GetOCRData.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_PdfFilePath">[in_PdfFilePath]</InArgument>
+        <OutArgument x:TypeArguments="scg:List(x:String)" x:Key="out_ExtractedTexts">[ExtractedTexts]</OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_MicrosoftOcrEndPoint" />
+        <InArgument x:TypeArguments="x:String" x:Key="in_MicrosoftOcrAPIKey" />
+      </ui:InvokeWorkflowFile.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeWorkflowFile>
+    <Sequence DisplayName="Regex Match" sap:VirtualizedContainerService.HintSize="1118.6666666666667,3072.6666666666665" sap2010:WorkflowViewState.IdRef="Sequence_2">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="GetMatchValueFromExtractedText - Invoice Number" sap:VirtualizedContainerService.HintSize="1084.6666666666667,177.33333333333334" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Framework\GetMatchValueFromExtractedText.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <InArgument x:TypeArguments="x:String" x:Key="in_RegexPattern">[in_Config("Regex_Invoice_Number")]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_ColumnName">Invoice_Number</InArgument>
+          <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_RedundantWordsList">[RedundantWordsList]</InArgument>
+          <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_ExtractedTexts">[ExtractedTexts]</InArgument>
+          <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_RowInsertValue">[RowInsertValue]</InOutArgument>
+        </ui:InvokeWorkflowFile.Arguments>
+      </ui:InvokeWorkflowFile>
+      <Sequence DisplayName="Invoice Date" sap:VirtualizedContainerService.HintSize="1084.6666666666667,962.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_13">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each currentText: For Date" sap:VirtualizedContainerService.HintSize="518,870.6666666666666" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[ExtractedTexts]">
+          <ui:ForEach.Body>
+            <ActivityAction x:TypeArguments="x:String">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="x:String" Name="currentText" />
+              </ActivityAction.Argument>
+              <Sequence DisplayName="Body Current Text" sap:VirtualizedContainerService.HintSize="484,732.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <If Condition="[System.Text.RegularExpressions.Regex.Matches(currentText, in_Config(&quot;Regex_Date&quot;)).Select(function(matchValue) matchValue.Value.Trim.TrimStart(&quot; &quot;c).TrimEnd(&quot; &quot;c)).distinct.count=1]" DisplayName="If: Check for Date Patterns" sap:VirtualizedContainerService.HintSize="450,624.6666666666666" sap2010:WorkflowViewState.IdRef="If_5">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <If.Then>
+                    <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,226.66666666666666" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <uasc:AppendItemToCollection x:TypeArguments="x:String" Collection="[RowInsertValue]" DisplayName="Append Items to Collection: Same Date" sap:VirtualizedContainerService.HintSize="382,166.66666666666666" sap2010:WorkflowViewState.IdRef="AppendItemToCollection`1_3">
+                        <uasc:AppendItemToCollection.Items>
+                          <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
+                            <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Matches(currentText, in_Config("Regex_Date")).Select(function(matchValue) matchValue.Value.Trim.TrimStart(" "c).TrimEnd(" "c))(0)]</InArgument>
+                            <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Matches(currentText, in_Config("Regex_Date")).Select(function(matchValue) matchValue.Value.Trim.TrimStart(" "c).TrimEnd(" "c))(0)]</InArgument>
+                          </scg:List>
+                        </uasc:AppendItemToCollection.Items>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </uasc:AppendItemToCollection>
+                    </Sequence>
+                  </If.Then>
+                  <If.Else>
+                    <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,226.66666666666666" sap2010:WorkflowViewState.IdRef="Sequence_21">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <uasc:AppendItemToCollection x:TypeArguments="x:String" Collection="[RowInsertValue]" DisplayName="Append Items to Collection" sap:VirtualizedContainerService.HintSize="382,166.66666666666666" sap2010:WorkflowViewState.IdRef="AppendItemToCollection`1_6">
+                        <uasc:AppendItemToCollection.Items>
+                          <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
+                            <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Matches(currentText, in_Config("Regex_Date")).OrderBy(function(matchValue) date.ParseExact(matchValue.Value,{"MMM dd, yyyy","MMM d, yyyy"},Globalization.CultureInfo.InvariantCulture,Globalization.DateTimeStyles.None))(0).value]</InArgument>
+                            <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Matches(currentText, in_Config("Regex_Date")).OrderByDescending(function(matchValue) date.ParseExact(matchValue.Value,{"MMM dd, yyyy","MMM d, yyyy"},Globalization.CultureInfo.InvariantCulture,Globalization.DateTimeStyles.None))(0).value]</InArgument>
+                          </scg:List>
+                        </uasc:AppendItemToCollection.Items>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </uasc:AppendItemToCollection>
+                    </Sequence>
+                  </If.Else>
+                </If>
+                <ui:Break DisplayName="Break: when Invoice Date Regex Found" sap:VirtualizedContainerService.HintSize="450,48" sap2010:WorkflowViewState.IdRef="Break_4" />
+              </Sequence>
+            </ActivityAction>
+          </ui:ForEach.Body>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </ui:ForEach>
+      </Sequence>
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="GetMatchValueFromExtractedText - Bill To" sap:VirtualizedContainerService.HintSize="1084.6666666666667,177.33333333333334" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Framework\GetMatchValueFromExtractedText.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <InArgument x:TypeArguments="x:String" x:Key="in_RegexPattern">[in_Config("Regex_BillTo")]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_ColumnName">Bill_To</InArgument>
+          <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_RedundantWordsList">[RedundantWordsList]</InArgument>
+          <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_ExtractedTexts">[ExtractedTexts]</InArgument>
+          <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_RowInsertValue">[RowInsertValue]</InOutArgument>
+        </ui:InvokeWorkflowFile.Arguments>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:InvokeWorkflowFile>
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="GetMatchValueFromExtractedText - Bill To Phone Number" sap:VirtualizedContainerService.HintSize="1084.6666666666667,177.33333333333334" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Framework\GetMatchValueFromExtractedText.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <InArgument x:TypeArguments="x:String" x:Key="in_RegexPattern">[in_Config("Regex_BillTo_PhoneNumber")]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_ColumnName">BillTo_PhoneNumber</InArgument>
+          <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_RedundantWordsList">[RedundantWordsList]</InArgument>
+          <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_ExtractedTexts">[ExtractedTexts]</InArgument>
+          <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_RowInsertValue">[RowInsertValue]</InOutArgument>
+        </ui:InvokeWorkflowFile.Arguments>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:InvokeWorkflowFile>
+      <Sequence DisplayName="Sequence LineItem" sap:VirtualizedContainerService.HintSize="1084.6666666666667,388.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_39">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <Switch x:TypeArguments="x:Int32" DisplayName="Switch: Check for the Type of Case w.r.t Regex Match" Expression="[If(System.Text.RegularExpressions.Regex.IsMatch(ExtractedTexts(0),in_Config(&quot;Regex_LineItem&quot;)),0,&#xD;&#xA;If(Split(ExtractedTexts(0),environment.NewLine).any(Function(matchItem) System.Text.RegularExpressions.Regex.IsMatch(matchItem,in_Config(&quot;Regex_LineItem_1&quot;))),1, _&#xD;&#xA;If(System.Text.RegularExpressions.Regex.IsMatch(ExtractedTexts(0),in_Config(&quot;Regex_LineItem_2&quot;)), 2, _&#xD;&#xA;If(System.Text.RegularExpressions.Regex.IsMatch(ExtractedTexts(0),in_Config(&quot;Regex_LineItem_3&quot;)), 3,4))))]" sap:VirtualizedContainerService.HintSize="1050.6666666666667,848.6666666666665" sap2010:WorkflowViewState.IdRef="Switch`1_3">
+          <Switch.Default>
+            <Sequence DisplayName="Sequence:: New Case Found" sap:VirtualizedContainerService.HintSize="416,349.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_89">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:LogMessage DisplayName="Log Message: New Case Found" sap:VirtualizedContainerService.HintSize="382,175.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Warn" Message="[&quot;New Case found viz &quot;+in_PdfFilePath]" />
+              <Throw DisplayName="Throw: New Case" Exception="[New BusinessRuleException(&quot;New Case found viz &quot;+in_PdfFilePath)]" sap:VirtualizedContainerService.HintSize="382,114" sap2010:WorkflowViewState.IdRef="Throw_1" />
+            </Sequence>
+          </Switch.Default>
+          <Sequence x:Key="0" DisplayName="Sequence: Case 0" sap:VirtualizedContainerService.HintSize="468,634.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_78">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Assign DisplayName="Assign: Regex Match for Case 0" sap:VirtualizedContainerService.HintSize="434,116.66666666666667" sap2010:WorkflowViewState.IdRef="Assign_76">
+              <Assign.To>
+                <OutArgument x:TypeArguments="scg:List(x:String)">[RegexMatch]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="scg:List(x:String)">[System.Text.RegularExpressions.Regex.Matches(ExtractedTexts(0),in_Config("Regex_LineItem")).Select(function(matchItem) matchItem.Value).toList]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign DisplayName="Assign: Amount Values for Case 0" sap:VirtualizedContainerService.HintSize="434,116.66666666666667" sap2010:WorkflowViewState.IdRef="Assign_77">
+              <Assign.To>
+                <OutArgument x:TypeArguments="scg:List(x:String)">[AmountValues]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="scg:List(x:String)">[RegexMatch.Select(function(match) system.Text.RegularExpressions.Regex.Match(match,in_Config("Regex_LineItem_NumericValues").ToString).Value).Cast(of String).ToList]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign DisplayName="Assign: RegexMatch for Case 0 updated" sap:VirtualizedContainerService.HintSize="434,116.66666666666667" sap2010:WorkflowViewState.IdRef="Assign_78">
+              <Assign.To>
+                <OutArgument x:TypeArguments="scg:List(x:String)">[RegexMatch]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="scg:List(x:String)">[RegexMatch.Select(function(match) system.Text.RegularExpressions.Regex.Replace(match,in_Config("Regex_LineItem_NumericValues").ToString,"")).Cast(of String).ToList]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign DisplayName="Assign: Jagged Item List for Case 0" sap:VirtualizedContainerService.HintSize="434,116.66666666666667" sap2010:WorkflowViewState.IdRef="Assign_79">
+              <Assign.To>
+                <OutArgument x:TypeArguments="scg:List(scg:List(x:String))">[JaggedLineItemList]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="scg:List(scg:List(x:String))">[AmountValues.Select(function(item) item.TrimEnd(" "c).TrimStart(" "c).Split(" "c).ToList).toList]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign DisplayName="Assign: Jagged Item List by zipping RegexMatch Value in it" sap:VirtualizedContainerService.HintSize="434,108" sap2010:WorkflowViewState.IdRef="Assign_80">
+              <Assign.To>
+                <OutArgument x:TypeArguments="scg:List(scg:List(x:String))">[JaggedLineItemList]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="scg:List(scg:List(x:String))" xml:space="preserve">[JaggedLineItemList.Zip(RegexMatch.Select(Function(match) New list(Of String) From {match}).Cast(Of List(Of String)).ToList, _
+Function(item1, item2) item2.Concat(item1).ToList).Tolist]</InArgument>
+              </Assign.Value>
+            </Assign>
+          </Sequence>
+          <Sequence x:Key="1" DisplayName="Sequence: Case 1" sap:VirtualizedContainerService.HintSize="468,667.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_79">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Assign DisplayName="Assign: Amount Values for Case 1" sap:VirtualizedContainerService.HintSize="434,116.66666666666667" sap2010:WorkflowViewState.IdRef="Assign_89">
+              <Assign.To>
+                <OutArgument x:TypeArguments="scg:List(x:String)">[AmountValues]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="scg:List(x:String)">[Split(ExtractedTexts(0),environment.NewLine).where(Function(matchItem) System.Text.RegularExpressions.Regex.IsMatch(matchItem,in_Config("Regex_LineItem_1"))).ToList]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign DisplayName="Assign: Regex Match for Case 1" sap:VirtualizedContainerService.HintSize="434,116.66666666666667" sap2010:WorkflowViewState.IdRef="Assign_90">
+              <Assign.To>
+                <OutArgument x:TypeArguments="scg:List(x:String)">[RegexMatch]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="scg:List(x:String)">[Split(system.Text.RegularExpressions.Regex.Match(ExtractedTexts(0),in_Config("Regex_LineItem_1_Description")).Value, environment.NewLine).Where(function(matchItem) Not RedundantWordsList.Any(function(item) matchItem.ToLower.Contains(item.ToLower)) And Not string.IsNullOrEmpty(matchItem) And Not string.IsNullOrWhiteSpace(matchItem)).ToList]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <If sap2010:Annotation.AnnotationText="If number of elements in List AmountValues and RegexMatch is not same then try workaround for updateing AmountValues" Condition="[AmountValues.Count &lt;&gt;  RegexMatch.Count And AmountValues.Count &lt; RegexMatch.Count]" DisplayName="If: The counts from both list is not same" sap:VirtualizedContainerService.HintSize="434,149.33333333333334" sap2010:WorkflowViewState.IdRef="If_22">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <If.Then>
+                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,25.333333333333332" sap2010:WorkflowViewState.IdRef="Sequence_87">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Assign DisplayName="Assign: Updated Value for AmountValues" sap:VirtualizedContainerService.HintSize="502,116.66666666666667" sap2010:WorkflowViewState.IdRef="Assign_93">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="scg:List(x:String)">[AmountValues]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="scg:List(x:String)">[Split(ExtractedTexts(1),environment.NewLine).where(Function(matchItem) System.Text.RegularExpressions.Regex.IsMatch(matchItem,in_Config("Regex_LineItem_1"))).ToList]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <If Condition="[AmountValues.Count &lt; 1]" DisplayName="If: Amoutn value is less than 1" sap:VirtualizedContainerService.HintSize="502,769.3333333333334" sap2010:WorkflowViewState.IdRef="If_23">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <If.Then>
+                      <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="468,517.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_85">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Assign DisplayName="Assign: WorkAround Value for Quantitiy Values" sap:VirtualizedContainerService.HintSize="434,116.66666666666667" sap2010:WorkflowViewState.IdRef="Assign_94">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="scg:List(x:String)">[QuantityValues]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="scg:List(x:String)">[Split(system.Text.RegularExpressions.Regex.Match(ExtractedTexts(1),in_Config("Regex_LineItem_3_Quantity")).Value, environment.NewLine).Where(Function(matchItem) Not RedundantWordsList.Any(Function(item) matchItem.ToLower.Contains(item.ToLower)) And Not String.IsNullOrEmpty(matchItem) And Not String.IsNullOrWhiteSpace(matchItem)).ToList]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <Assign DisplayName="Assign: WorkAround Vaule for Amount" sap:VirtualizedContainerService.HintSize="434,116.66666666666667" sap2010:WorkflowViewState.IdRef="Assign_95">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="scg:List(x:String)">[AmountValues]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="scg:List(x:String)">[Split(ExtractedTexts(1),environment.NewLine).where(Function(matchItem) System.Text.RegularExpressions.Regex.IsMatch(matchItem,in_Config("Regex_LineItem_3"))).ToList]</InArgument>
+                          </Assign.Value>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </Assign>
+                        <Assign DisplayName="Assign: WorkAround Value for RegexMatch" sap:VirtualizedContainerService.HintSize="434,116.66666666666667" sap2010:WorkflowViewState.IdRef="Assign_96">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="scg:List(x:String)">[RegexMatch]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="scg:List(x:String)">[Split(system.Text.RegularExpressions.Regex.Match(ExtractedTexts(1),in_Config("Regex_LineItem_3_Description")).Value, environment.NewLine).Where(Function(matchItem) Not RedundantWordsList.Any(Function(item) matchItem.ToLower.Contains(item.ToLower)) And Not String.IsNullOrEmpty(matchItem) And Not String.IsNullOrWhiteSpace(matchItem)).ToList]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <Assign DisplayName="Assign: WorkAroundValue for AmountValues" sap:VirtualizedContainerService.HintSize="434,107.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_97">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="scg:List(x:String)">[AmountValues]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="scg:List(x:String)">[AmountValues.Zip(QuantityValues,Function(item1, item2) item2+" "+item1).Tolist]</InArgument>
+                          </Assign.Value>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </Assign>
+                      </Sequence>
+                    </If.Then>
+                    <If.Else>
+                      <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,90" sap2010:WorkflowViewState.IdRef="Sequence_86">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </Sequence>
+                    </If.Else>
+                  </If>
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,25.333333333333332" sap2010:WorkflowViewState.IdRef="Sequence_88">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </Sequence>
+              </If.Else>
+            </If>
+            <Assign DisplayName="Assign: New Value of JaggedListItems" sap:VirtualizedContainerService.HintSize="434,116.66666666666667" sap2010:WorkflowViewState.IdRef="Assign_91">
+              <Assign.To>
+                <OutArgument x:TypeArguments="scg:List(scg:List(x:String))">[JaggedLineItemList]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="scg:List(scg:List(x:String))">[AmountValues.Select(function(item) item.TrimEnd(" "c).TrimStart(" "c).Split(" "c).ToList).toList]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign DisplayName="Assign: Zip JaggedList with Remaining RegexList Items" sap:VirtualizedContainerService.HintSize="434,108" sap2010:WorkflowViewState.IdRef="Assign_92">
+              <Assign.To>
+                <OutArgument x:TypeArguments="scg:List(scg:List(x:String))">[JaggedLineItemList]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="scg:List(scg:List(x:String))" xml:space="preserve">[JaggedLineItemList.Zip(RegexMatch.Select(Function(match) New list(Of String) From {match}).Cast(Of List(Of String)).ToList, _
+Function(item1, item2) item2.Concat(item1).ToList).Tolist]</InArgument>
+              </Assign.Value>
+            </Assign>
+          </Sequence>
+        </Switch>
+      </Sequence>
+      <Assign DisplayName="Assign: Join 2 Jagged List" sap:VirtualizedContainerService.HintSize="1084.6666666666667,116.66666666666667" sap2010:WorkflowViewState.IdRef="Assign_51">
+        <Assign.To>
+          <OutArgument x:TypeArguments="scg:List(scg:List(x:String))">[JaggedLineItemList]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="scg:List(scg:List(x:String))">[(From i In Enumerable.Range(1, JaggedLineItemList.Count) Select If(i = 1, RowInsertValue.Concat(JaggedLineItemList(i-1)).ToList, Enumerable.Repeat("", RowInsertValue.Count).ToList().Concat(JaggedLineItemList(i-1)).ToList)).ToList()]</InArgument>
+        </Assign.Value>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </Assign>
+      <Assign DisplayName="Assign: Initialize Again RowInsertValue List" sap:VirtualizedContainerService.HintSize="1084.6666666666667,116.66666666666667" sap2010:WorkflowViewState.IdRef="Assign_52">
+        <Assign.To>
+          <OutArgument x:TypeArguments="scg:List(x:String)">[RowInsertValue]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="scg:List(x:String)">[New List(of String)]</InArgument>
+        </Assign.Value>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </Assign>
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="GetMatchValueFromExtractedText - Shipping Amount" sap:VirtualizedContainerService.HintSize="1084.6666666666667,177.33333333333334" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="Framework\GetMatchValueFromExtractedText.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <InArgument x:TypeArguments="x:String" x:Key="in_RegexPattern">[in_Config("Regex_Invoice_ShippingTax")]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_ColumnName">Invoice_ShippingTax</InArgument>
+          <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_RedundantWordsList">[RedundantWordsList]</InArgument>
+          <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_ExtractedTexts">[ExtractedTexts]</InArgument>
+          <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_RowInsertValue">[RowInsertValue]</InOutArgument>
+        </ui:InvokeWorkflowFile.Arguments>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:InvokeWorkflowFile>
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="GetMatchValueFromExtractedText - Total Amount" sap:VirtualizedContainerService.HintSize="1073.3333333333333,177.33333333333334" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="Framework\GetMatchValueFromExtractedText.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <InArgument x:TypeArguments="x:String" x:Key="in_RegexPattern">[in_Config("Regex_Invoice_Total")]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_ColumnName">Invoice_Total</InArgument>
+          <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_RedundantWordsList">[RedundantWordsList]</InArgument>
+          <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_ExtractedTexts">[ExtractedTexts]</InArgument>
+          <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="io_RowInsertValue">[RowInsertValue]</InOutArgument>
+        </ui:InvokeWorkflowFile.Arguments>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:InvokeWorkflowFile>
+      <Assign DisplayName="Assign: JaggedLinkedList" sap:VirtualizedContainerService.HintSize="1073.3333333333333,117.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_53">
+        <Assign.To>
+          <OutArgument x:TypeArguments="scg:List(scg:List(x:String))">[JaggedLineItemList]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="scg:List(scg:List(x:String))">[(From i In Enumerable.Range(1, JaggedLineItemList.Count) Select If(i = 1, JaggedLineItemList(i-1).Concat(RowInsertValue).ToList, JaggedLineItemList(i-1).Concat(Enumerable.Repeat("", RowInsertValue.Count).ToList()).ToList)).ToList()]</InArgument>
+        </Assign.Value>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </Assign>
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Create_Datatable - Invoke Workflow File (Framework\Create_Datatable.xaml)" sap:VirtualizedContainerService.HintSize="1073.3333333333333,177.33333333333334" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Framework\Create_Datatable.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_ColumnNames">[in_Config.Where(function(x) x.Key.ToLower.Contains("regex") and not in_Config.where(function(y) y.Value.ToLower.Contains("regex")).ToDictionary.Values.Cast(of String).Contains(x.Key) and Not x.Key.ToCharArray.Any(function(y) Integer.TryParse(y, Globalization.NumberStyles.Number))).ToDictionary.Keys.Cast(of String).ToList]</InArgument>
+          <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_DataTable">[out_dt_ExtractedTable]</OutArgument>
+        </ui:InvokeWorkflowFile.Arguments>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:InvokeWorkflowFile>
+      <ui:ForEach x:TypeArguments="scg:List(x:String)" CurrentIndex="{x:Null}" DisplayName="For Each currentListOfText" sap:VirtualizedContainerService.HintSize="1073.3333333333333,246.66666666666666" sap2010:WorkflowViewState.IdRef="ForEach`1_14" Values="[JaggedLineItemList]">
+        <ui:ForEach.Body>
+          <ActivityAction x:TypeArguments="scg:List(x:String)">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="scg:List(x:String)" Name="currentListOfText" />
+            </ActivityAction.Argument>
+            <Sequence DisplayName="Body: Jagged Line Items" sap:VirtualizedContainerService.HintSize="416,108" sap2010:WorkflowViewState.IdRef="Sequence_64">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[currentListOfText.ToArray]" DataTable="[out_dt_ExtractedTable]" DisplayName="Add Data Row: List Item" sap:VirtualizedContainerService.HintSize="382,48" sap2010:WorkflowViewState.IdRef="AddDataRow_1">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:AddDataRow>
+            </Sequence>
+          </ActivityAction>
+        </ui:ForEach.Body>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:ForEach>
+    </Sequence>
+    <ui:LogMessage DisplayName="Log Message: End" sap:VirtualizedContainerService.HintSize="1118.6666666666667,48" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;End: Process ATLAS Pdfs&quot;]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:LogMessage>
+  </Sequence>
+</Activity>

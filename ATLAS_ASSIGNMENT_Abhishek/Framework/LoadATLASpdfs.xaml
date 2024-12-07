@@ -1,0 +1,397 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Loader_ATLAS" this:Loader_ATLAS.in_BatchLink="https://automatework.sharepoint.com/:u:/s/AccelirateHub/EU7pfYZcINlOjlbCjDqRFMQB__FV2184TyW2zxcP49Oukw?e=YTEfiN" this:Loader_ATLAS.in_DirectoryPath="C:\Personal\" this:Loader_ATLAS.in_FileName="Test.zip" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:si="clr-namespace:System.IO;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:uascw="clr-namespace:UiPath.Activities.System.Compression.Workflow;assembly=UiPath.System.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_BatchLink" Type="InArgument(x:String)" />
+    <x:Property Name="in_DirectoryPath" Type="InArgument(x:String)" />
+    <x:Property Name="in_FileName" Type="InArgument(x:String)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap2010:WorkflowViewState.IdRef>Loader_ATLAS_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Services.RuntimeAnalyze</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Platform.SyncObjects</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>UiPath.Activities.System.FileOperations</x:String>
+      <x:String>UiPath.Activities.System.Encode</x:String>
+      <x:String>UiPath.Activities.System.Compression.Workflow</x:String>
+      <x:String>System.Numerics</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.MicrosoftOffice365.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OmniPage.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.PDF.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.Watcher</AssemblyReference>
+      <AssemblyReference>System.IO.Packaging</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.AccessControl</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
+      <AssemblyReference>System.Linq.Async.Queryable</AssemblyReference>
+      <AssemblyReference>System.Linq.Parallel</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Linq.Queryable</AssemblyReference>
+      <AssemblyReference>System.CodeDom</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
+      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Loader_ATLAS" sap:VirtualizedContainerService.HintSize="1182.6666666666667,3271.3333333333335" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:Boolean" Name="ExistDownloadedFile" />
+      <Variable x:TypeArguments="si:DirectoryInfo" Name="DirectoryPath" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message: Start" sap:VirtualizedContainerService.HintSize="1056,57.333333333333336" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Start: Get Loader ATLAS&quot;]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:LogMessage>
+    <Sequence DisplayName="Add to Queue Items" sap:VirtualizedContainerService.HintSize="1056,3143.3333333333335" sap2010:WorkflowViewState.IdRef="Sequence_2">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <uix:NApplicationCard sap2010:Annotation.AnnotationText="Open Browser to the particular Batch Link and then download the File&#xA;1. inputs: a. Sharepoint Link to the Batch File&#xA;               b. Shareable DirectoryPath&#xA;               c. File Name&#xA;2. outputs:  a. boolean confirmation for whether the process completed successfully" AttachMode="ByInstance" DisplayName="Open Browser for Sharepoint downloadable file" sap:VirtualizedContainerService.HintSize="1022,1757.3333333333333" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" InteractionMode="DebuggerApi" OpenMode="IfNotOpen" ScopeGuid="76dfe4b8-fffd-467c-89f5-56365d449c1c" Version="V2" WindowResize="Maximize">
+        <uix:NApplicationCard.Body>
+          <ActivityAction x:TypeArguments="x:Object">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+            </ActivityAction.Argument>
+            <Sequence sap2010:Annotation.AnnotationText="Perform actions to download and save the file to sepecific location" DisplayName="Downloand and save File " sap:VirtualizedContainerService.HintSize="988,1370.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_3">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click - Download Zip File" sap:VirtualizedContainerService.HintSize="954,229.33333333333334" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="76dfe4b8-fffd-467c-89f5-56365d449c1c" Version="V4">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable BrowserURL="automatework.sharepoint.com/sites/AccelirateHub/Shared%20Documents/Forms/AllItems.aspx" CVScreenId="255887dd-a5c0-4ee1-9af0-5fba510697a7" CvElementArea="33, 237, 32, 36" CvType="Icon" DesignTimeRectangle="38, 243, 24, 24" DesignTimeScaleFactor="1.5" FullSelectorArgument="&lt;webctrl tag='I' aaname='' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='I' aaname='' type='' class='ms-Icon root-33 css-71 ms-Button-icon icon-65' check:text='' /&gt;" Guid="6a26d363-4e95-447e-a2a1-eafe87a4b925" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAEvSURBVEhL7dY9T8JAHMdxX1HfhCQdOvQtyF7ZcKdMfQPqBi9AJnWlCiTqgpM68yCgQh/wBfzMv0mT6921xzWG6YZv2ty/6SfptUlPLMvCMTOg0P3dLRbzGTzPk85VaYPhcIivzRoX7bZ0rsqAQgZUZUAhA6qSgo3GKVqt8+zIz6rAZvMsi19nk4LXV5eIox0m4xFc1y3MysAgCLBZr/Dx/gbbtgszNilICGFpEguoDMwxis7zdVmle1iG8qAORlW+NDKUBXUxqhKkeHQ8eszAfq+njVFKkGLR7c83kjhCtNtqY9RBIJWj+zTB7z6thVEHgxR9lw9hiNXnEl3fl16jSgv8jwTQcRwMBjd4nU5r9fL8BL/TKdyTTQDp92+5mGf7VCfaY/qV5O+bd+RHauEPMX6sHVRJ2ecAAAAASUVORK5CYII=" InformativeScreenshot="7865e149aa67c5fddde6e9c95093bb18.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='automatework.sharepoint.com*ATLAS*' /&gt;" SearchSteps="Selector, FuzzySelector, CV" Version="V4" Visibility="Interactive" WaitForReadyArgument="Complete" />
+                </uix:NClick.Target>
+                <uix:NClick.VerifyOptions>
+                  <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                    <uix:VerifyExecutionOptions.Retry>
+                      <InArgument x:TypeArguments="x:Boolean" />
+                    </uix:VerifyExecutionOptions.Retry>
+                    <uix:VerifyExecutionOptions.Timeout>
+                      <InArgument x:TypeArguments="x:Double" />
+                    </uix:VerifyExecutionOptions.Timeout>
+                  </uix:VerifyExecutionOptions>
+                </uix:NClick.VerifyOptions>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </uix:NClick>
+              <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into: File Path" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="954,292.6666666666667" sap2010:WorkflowViewState.IdRef="NTypeInto_2" InteractionMode="HardwareEvents" ScopeIdentifier="76dfe4b8-fffd-467c-89f5-56365d449c1c" Text="[in_DirectoryPath+in_FileName]" Version="V4">
+                <uix:NTypeInto.Target>
+                  <uix:TargetAnchorable BrowserURL="automatework.sharepoint.com/sites/AccelirateHub/Shared%20Documents/Forms/AllItems.aspx" CVScreenId="ecbec7a9-564a-4bd3-8ce8-24a3cc993c77" CvElementArea="132, 376, 818, 24" CvType="InputBox" DesignTimeRectangle="136, 380, 791, 17" DesignTimeScaleFactor="1" ElementType="InputBox" FullSelectorArgument="&lt;wnd aaname='Explorer Pane' cls='DirectUIHWND' /&gt;&lt;wnd aaname='File name:' cls='ComboBox' /&gt;&lt;wnd ctrlid='1001' /&gt;" FuzzySelectorArgument="&lt;wnd aaname='Explorer Pane' cls='DirectUIHWND' /&gt;&lt;wnd aaname='File name:' cls='ComboBox' /&gt;&lt;wnd ctrlid='1001' /&gt;" Guid="8f1456b9-3f65-4eea-8c54-abf1957148c3" InformativeScreenshot="d5c14aed01623a26b67f152792b8bb77.png" IsResponsive="True" ScopeSelectorArgument="&lt;wnd app='chrome.exe' title='Save As' /&gt;" SearchSteps="Selector, FuzzySelector, CV" Version="V4" Visibility="Visible" WaitForReadyArgument="Complete">
+                    <uix:TargetAnchorable.Anchors>
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                        <uix:Target CVScreenId="ecbec7a9-564a-4bd3-8ce8-24a3cc993c77" CvTextArea="73, 382, 55, 12" CvTextArgument="File name:" CvType="Text" DesignTimeRectangle="18, 377, 115, 23" ElementType="Text" FullSelectorArgument="&lt;wnd aaname='Explorer Pane' cls='DirectUIHWND' /&gt;&lt;ctrl name='Explorer Pane' role='pane' /&gt;&lt;ctrl name='Folder Layout Pane' role='pane' /&gt;&lt;ctrl name='Details Pane' role='pane' /&gt;&lt;ctrl name='File name:' role='text' /&gt;" FuzzySelectorArgument="&lt;wnd aaname='Explorer Pane' cls='DirectUIHWND' /&gt;&lt;ctrl name='Explorer Pane' role='pane' /&gt;&lt;ctrl name='Folder Layout Pane' role='pane' /&gt;&lt;ctrl name='Details Pane' role='pane' /&gt;&lt;ctrl name='File name:' role='text' automationid='' check:text='File name:' /&gt;" Guid="4fb4908f-3333-4125-ba89-f201c0831be7" SearchSteps="Selector, FuzzySelector, CV" />
+                      </scg:List>
+                    </uix:TargetAnchorable.Anchors>
+                  </uix:TargetAnchorable>
+                </uix:NTypeInto.Target>
+                <uix:NTypeInto.VerifyOptions>
+                  <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears">
+                    <uix:VerifyExecutionTypeIntoOptions.Retry>
+                      <InArgument x:TypeArguments="x:Boolean" />
+                    </uix:VerifyExecutionTypeIntoOptions.Retry>
+                    <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                      <InArgument x:TypeArguments="x:Double" />
+                    </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                  </uix:VerifyExecutionTypeIntoOptions>
+                </uix:NTypeInto.VerifyOptions>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </uix:NTypeInto>
+              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click on Save" sap:VirtualizedContainerService.HintSize="954,229.33333333333334" sap2010:WorkflowViewState.IdRef="NClick_8" InteractionMode="HardwareEvents" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="76dfe4b8-fffd-467c-89f5-56365d449c1c" Version="V4">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable BrowserURL="automatework.sharepoint.com/sites/AccelirateHub/Shared%20Documents/Forms/AllItems.aspx" CVScreenId="68dc298c-63a2-4358-b026-6c4b20824054" CvElementArea="738, 480, 88, 26" CvTextArea="769, 486, 26, 12" CvTextArgument="Save" CvType="Button" DesignTimeRectangle="738, 480, 88, 26" DesignTimeScaleFactor="1" ElementType="Button" FullSelectorArgument="&lt;wnd ctrlid='1' title='&amp;amp;Save' /&gt;" FuzzySelectorArgument="&lt;wnd ctrlid='1' title='&amp;amp;Save' check:text='&amp;amp;Save' /&gt;" Guid="6459736e-ec83-48fd-b1ba-f1bcd1b4bbcf" InformativeScreenshot="85416b717c1ac2b94df1ac87327c216a.png" ScopeSelectorArgument="&lt;wnd app='chrome.exe' title='Save As' /&gt;" SearchSteps="Selector, FuzzySelector, CV" Version="V4" Visibility="Interactive" WaitForReadyArgument="Interactive" />
+                </uix:NClick.Target>
+                <uix:NClick.VerifyOptions>
+                  <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                    <uix:VerifyExecutionOptions.Retry>
+                      <InArgument x:TypeArguments="x:Boolean" />
+                    </uix:VerifyExecutionOptions.Retry>
+                    <uix:VerifyExecutionOptions.Timeout>
+                      <InArgument x:TypeArguments="x:Double" />
+                    </uix:VerifyExecutionOptions.Timeout>
+                  </uix:VerifyExecutionOptions>
+                </uix:NClick.VerifyOptions>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </uix:NClick>
+              <uix:NCheckState DisplayName="Check App State 'Confirm Save As'" sap:VirtualizedContainerService.HintSize="954,366.6666666666667" sap2010:WorkflowViewState.IdRef="NCheckState_1" ScopeIdentifier="76dfe4b8-fffd-467c-89f5-56365d449c1c" Timeout="10" Version="V4">
+                <uix:NCheckState.IfExists>
+                  <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="450,113.33333333333333" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click &quot;Yes&quot;" sap:VirtualizedContainerService.HintSize="416,50.666666666666664" sap2010:WorkflowViewState.IdRef="NClick_9" InteractionMode="HardwareEvents" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="76dfe4b8-fffd-467c-89f5-56365d449c1c" Version="V4">
+                      <uix:NClick.Target>
+                        <uix:TargetAnchorable BrowserURL="downloads" CVScreenId="e4df066e-d1f3-405a-b989-5effca23a248" CvElementArea="304, 154, 105, 37" CvTextArea="342, 165, 27, 16" CvTextArgument="Yes" CvType="Button" DesignTimeRectangle="304, 155, 105, 37" DesignTimeScaleFactor="1.5" ElementType="Button" FullSelectorArgument="&lt;wnd aaname='Confirm Save As' cls='DirectUIHWND' /&gt;&lt;wnd aaname='Yes' cls='Button' title='&amp;amp;Yes' /&gt;" FuzzySelectorArgument="&lt;wnd aaname='Confirm Save As' cls='DirectUIHWND' /&gt;&lt;wnd aaname='Yes' cls='Button' title='&amp;amp;Yes' check:text='&amp;amp;Yes' /&gt;" Guid="be1da206-60f9-4be8-bda8-197aed12ce73" InformativeScreenshot="b9a1bbaaadaa1708af74a8984842d340.png" ScopeSelectorArgument="&lt;wnd app='chrome.exe' title='Confirm Save As' /&gt;" SearchSteps="Selector, FuzzySelector, CV" Version="V4" Visibility="Interactive" WaitForReadyArgument="Complete" />
+                      </uix:NClick.Target>
+                      <uix:NClick.VerifyOptions>
+                        <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                          <uix:VerifyExecutionOptions.Retry>
+                            <InArgument x:TypeArguments="x:Boolean" />
+                          </uix:VerifyExecutionOptions.Retry>
+                          <uix:VerifyExecutionOptions.Timeout>
+                            <InArgument x:TypeArguments="x:Double" />
+                          </uix:VerifyExecutionOptions.Timeout>
+                        </uix:VerifyExecutionOptions>
+                      </uix:NClick.VerifyOptions>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </uix:NClick>
+                  </Sequence>
+                </uix:NCheckState.IfExists>
+                <uix:NCheckState.IfNotExists>
+                  <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="450,93.33333333333333" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </Sequence>
+                </uix:NCheckState.IfNotExists>
+                <uix:NCheckState.Target>
+                  <uix:TargetAnchorable BrowserURL="automatework.sharepoint.com/sites/AccelirateHub/Shared%20Documents/Forms/AllItems.aspx" ContentHash="U4XtXHHfDUmSCxe0iF9OTQ" DesignTimeRectangle="304, 155, 105, 37" DesignTimeScaleFactor="1.5" FullSelectorArgument="&lt;wnd aaname='Yes' cls='Button' /&gt;" Guid="b25ab0e8-e655-492f-8403-9656393641f2" InformativeScreenshot="d83ea2ca2155935ed7db2c31dc269eb5.png" Reference="OeCwAG_zCEm5ydqZm0Bolg/s0OnAag0uUOqiZX8vrWT2w" ScopeSelectorArgument="&lt;wnd app='chrome.exe' title='Confirm Save As' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive">
+                    <uix:TargetAnchorable.Anchors>
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                        <uix:Target DesignTimeRectangle="418, 155, 105, 37" FullSelectorArgument="&lt;wnd aaname='No' cls='Button' /&gt;" Guid="08199b3b-3241-464b-ae99-8823678da4c0" SearchSteps="Selector" />
+                      </scg:List>
+                    </uix:TargetAnchorable.Anchors>
+                  </uix:TargetAnchorable>
+                </uix:NCheckState.Target>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </uix:NCheckState>
+              <ui:FileExistsX DisplayName="File Exists: Batch Zip" Exists="[ExistDownloadedFile]" sap:VirtualizedContainerService.HintSize="954,159.33333333333334" sap2010:WorkflowViewState.IdRef="FileExistsX_1" Path="[in_DirectoryPath+in_FileName]">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:FileExistsX>
+            </Sequence>
+          </ActivityAction>
+        </uix:NApplicationCard.Body>
+        <uix:NApplicationCard.TargetApp>
+          <uix:TargetApp Area="1912, -8, 1936, 1048" BrowserType="Chrome" ContentHash="ovcgJ-4rP0OPUUaAVtisfQ" IconBase64="iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAEUSURBVDhPY0AHzDkFBkC8H4j/I2EQ3wCqBDcAKQLi91BN6Bgkjt8QoIL7SBqw4ftQpQjA3Nz+Hoj/48VNbciGOEC1QgBWDVgwo6UNYQMmnjz9Hxkgy/F4+f6Xmr0Qhu8DcQCGASAAMgTETtq0BS4Owry+AcgGwHAAigEXXrwEG7Lw4qX/ypOnEWPAfRQDhLv7/zcePPz//fcfYAziEzDgP4oBIGfDDAEBo1nzSDMAZCsMHHjwEC4OwqKRcdgMQPUCPiydnPFffvEqdAPAgUgwIbE2toINUFy2FqYREY3oAKjQAaQYHWtOnfPf/NgF1ESEDQAVCQDxfSAGaUDGIDEBqDL8AKjQAIjPQzWCMIiNJScyMAAAIGu1wTJAuKMAAAAASUVORK5CYII=" InformativeScreenshot="724b4755b712b3e3d6dd3dab7b5a55d9.jpg" Reference="OeCwAG_zCEm5ydqZm0Bolg/giQPhbW4z0KE0AKoTfUpUQ" Selector="&lt;html app='chrome.exe' title='automatework.sharepoint.com/sites/AccelirateHub/Shared Documents/Forms/AllItems.aspx?id=%2Fsites%2FAccelirateHub%2FShared Documents%2FFiles - Training%2FTraining - Accelirate Internal LMS%2FTraining - LMS Content%2FATLAS Assignment Input Files%2FBatch1%2Ezip&amp;amp;parent=%2Fsites%2FAccelirateHub%2FShared Documents%2FFiles - Training%2FTraining - Accelirate Internal LMS%2FTraining - LMS Content%2FATLAS Assignment Input Files&amp;amp;p=true&amp;amp;ga=1' /&gt;" Title="automatework.sharepoint.com/sites/AccelirateHub/Shared Documents/Forms/AllItems.aspx?id=%2Fsites%2FAccelirateHub%2FShared Documents%2FFiles - Training%2FTraining - Accelirate Internal LMS%2FTraining - LMS Content%2FATLAS Assignment Input Files%2FBatch1%2Ezip&amp;parent=%2Fsites%2FAccelirateHub%2FShared Documents%2FFiles - Training%2FTraining - Accelirate Internal LMS%2FTraining - LMS Content%2FATLAS Assignment Input Files&amp;p=true&amp;ga=1" Url="[in_BatchLink]" Version="V1" />
+        </uix:NApplicationCard.TargetApp>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </uix:NApplicationCard>
+      <If Condition="[Not ExistDownloadedFile]" DisplayName="Check file download status and handle errors" sap:VirtualizedContainerService.HintSize="1022,1294" sap2010:WorkflowViewState.IdRef="If_1">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <If.Then>
+          <Sequence DisplayName="Then Throw Error" sap:VirtualizedContainerService.HintSize="416,174.66666666666666" sap2010:WorkflowViewState.IdRef="Sequence_11">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Throw DisplayName="Throw: Unable to Download the File" Exception="[New System.Exception(&quot;Unable to Download the File&quot;)]" sap:VirtualizedContainerService.HintSize="382,114.66666666666667" sap2010:WorkflowViewState.IdRef="Throw_1" />
+          </Sequence>
+        </If.Then>
+        <If.Else>
+          <Sequence sap2010:Annotation.AnnotationText="Extract the Zip File and get the list of files from it and then upload its path into the queue" DisplayName="Else Furthter process to Add into Queue" sap:VirtualizedContainerService.HintSize="484,956.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_12">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <uascw:ExtractFiles Content="{x:Null}" File="{x:Null}" Password="{x:Null}" sap2010:Annotation.AnnotationText="Extract from Zip File " CodePage="Default" ConflictResolution="Replace" DestinationFolder="[in_DirectoryPath]" DestinationFolderInfo="[DirectoryPath]" DisplayName="Extract/Unzip Files for Batch" ExtractToADedicatedFolder="True" FileToExtract="[in_DirectoryPath+in_FileName]" sap:VirtualizedContainerService.HintSize="450,277.3333333333333" sap2010:WorkflowViewState.IdRef="ExtractFiles_1" SkipUnsupportedFiles="False">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </uascw:ExtractFiles>
+            <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Loop through each Files in Folder and Add it into the Queue" DisplayName="For Each filepath" sap:VirtualizedContainerService.HintSize="450,574" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[(From folder in DirectoryPath.GetDirectories From subfolder in folder.GetDirectories From file in subfolder.GetFiles(&quot;*.pdf&quot;) let x = file.FullName select x)]">
+              <ui:ForEach.Body>
+                <ActivityAction x:TypeArguments="x:String">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="x:String" Name="filepath" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="416,404.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" ContinueOnError="False" DisplayName="Add Queue Item: PDFs Path" FolderPath="Shared" sap:VirtualizedContainerService.HintSize="382,230" sap2010:WorkflowViewState.IdRef="AddQueueItem_1" ItemInformationCollection="[new System.Collections.Generic.Dictionary(Of System.String, System.Object) From {  }]" Priority="Normal" QueueType="ATLAS_Assignment" Reference="[DateTime.Now.ToString(&quot;ddMMMyyHHmmss&quot;)]">
+                      <ui:AddQueueItem.ItemInformation>
+                        <InArgument x:TypeArguments="x:String" x:Key="FilePath">[filepath]</InArgument>
+                      </ui:AddQueueItem.ItemInformation>
+                    </ui:AddQueueItem>
+                    <Delay DisplayName="Delay: 1 Sec" Duration="[TimeSpan.FromSeconds(1)]" sap:VirtualizedContainerService.HintSize="382,114.66666666666667" sap2010:WorkflowViewState.IdRef="Delay_1" />
+                  </Sequence>
+                </ActivityAction>
+              </ui:ForEach.Body>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:ForEach>
+          </Sequence>
+        </If.Else>
+      </If>
+    </Sequence>
+    <ui:LogMessage DisplayName="Log Message: End" sap:VirtualizedContainerService.HintSize="1056,48" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;End: Loader ATLAS&quot;]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:LogMessage>
+  </Sequence>
+</Activity>
